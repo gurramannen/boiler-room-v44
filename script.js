@@ -108,8 +108,9 @@ function addTask(){
 function markTaskAsComplete(){    
 
     if (listOfTasks.length === 0) {
-        console.log("Det finns inga tasks att ta bort");
+        alert("Det finns inga tasks att markera");
     }
+    else{
     
     let taskIdInput = parseInt(prompt("Välj taskID som du vill markera som klar."), 10);
     let task = listOfTasks.find(task => task.taskId === taskIdInput);
@@ -120,7 +121,7 @@ function markTaskAsComplete(){
     } else {
         console.log("TaskID hittades inte.");
     }
-}
+}};
 
 
 
@@ -131,18 +132,20 @@ function deleteTask(){
     if (listOfTasks.length === 0) {
         alert("Det finns inga tasks att ta bort")
     }
+    else {
     
-    let taskIdCounter = prompt("Välj taskID som du vill ta bort");
-    let index = listOfTasks.findIndex(task => task.taskId == taskIdCounter);
-    if (index !== -1) {
-        listOfTasks.splice(index, 1);
-       // deletedTasks = listOfTasks.splice(index, 1);
-        alert("Uppgift borttagen!");
-        console.log("uppgift borttagen" + deletedTasks);
-        updateTaskIds(); // Uppdatera taskId:n efter borttagning
-    } else {
-        alert("Ingen uppgift med det angivna ID:t hittades.");
-        console.log("inget giltligt ID hittades")
+        let taskIdCounter = prompt("Välj taskID som du vill ta bort");
+        let index = listOfTasks.findIndex(task => task.taskId == taskIdCounter);
+        if (index !== -1) {
+            listOfTasks.splice(index, 1);
+        // deletedTasks = listOfTasks.splice(index, 1);
+            alert("Uppgift borttagen!");
+            console.log("uppgift borttagen" + deletedTasks);
+            updateTaskIds(); // Uppdatera taskId:n efter borttagning
+        } else {
+            alert("Ingen uppgift med det angivna ID:t hittades.");
+            console.log("inget giltligt ID hittades")
+        }
     }
 };
 
@@ -151,11 +154,11 @@ function showAllTasks(){
     if (listOfTasks.length === 0) {
         console.log("Det finns inga tasks");
         
+    } else {
+        listOfTasks.forEach(task => {
+            console.log(`ID: ${task.taskId}, Titel: ${task.title}, Beskrivning: ${task.description}, Klar? ${task.isComplete}`);
+        });
     }
-    
-    listOfTasks.forEach(task => {
-        console.log(`ID: ${task.taskId}, Titel: ${task.title}, Beskrivning: ${task.description}, status: ${task.isComplete}`);
-    });
 };
 
 function updateTaskIds() {
