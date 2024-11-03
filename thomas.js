@@ -1,22 +1,5 @@
-
-
 // Task array
 let listOfTasks = [];
-console.log(listOfTasks);
-
-
-//Object for tasks -- default structure
-
-// let task = {
-//     taskId:  taskIdCounter++,
-//     title: "title",
-//     description: "description",
-//     isComplete: false
-//    };
-// console.log(task);
-
-
-// do while loop menu
 
 //toDoList
 //showMenu --> värde
@@ -27,57 +10,43 @@ console.log(listOfTasks);
 
 
 function showMenu(){
-    let choice;
-    do {
-        choice = prompt(
-            `
-            1. lägg till en ny uppgift\n
-            2. Visa alla uppgifter\n
-            3. Markera uppgift som klar\n
-            4. Ta bort en uppgift.\n
-            5. Avsluta\n
-            
-            `
-        );
-         // Convert choice to an integer and handle NaN input
-         if (!isNaN(choice)) {
-            choice = parseInt(choice);
-         }
+let choice;
+do {
+    choice = prompt(
+        `
+        1. lägg till en ny uppgift\n
+        2. Visa alla uppgifter\n
+        3. Markera uppgift som klar\n
+        4. Ta bort en uppgift.\n
+        5. Avsluta\n
+        `
+    );
+ // Convert choice to an integer and handle NaN input
+    if (!isNaN(choice)) {
+       choice = parseInt(choice);
+    }
 
-        switch (choice) {
-            case 1:
-                addTask();
-                console.log("1");
-                
-                break;
-            case 2:
-                showAllTasks();
-                
-                
-                break;
-            case 3:
-                markTaskAsComplete();
-                console.log("mark as complete");
-                
-                break;
-            case 4:
-                deleteTask();
-                
-                
-                break;
-            case 5:
-                console.log("Avslutar programmet...");
-                
-                
-                break;
-            default:
-                alert(`Felaktig inmatning! Du angav ${choice}, godtagbar input är 1-5` );
-        }
-    } while(choice !== 5);
-        
+    switch (choice) {
+       case 1:
+           addTask();
+           break;
+       case 2:
+           showAllTasks();
+           break;
+       case 3:
+           markTaskAsComplete();         
+           break;
+       case 4:
+           deleteTask();           
+           break;
+       case 5:
+           console.log("Avslutar programmet...");
+           break;
+       default:
+           alert(`Felaktig inmatning! Du angav ${choice}, godtagbar input är 1-5` );
+    }
+} while(choice !== 5);       
 };
-
-
 
 // Function add add tasks //!(REBECCA)
 
@@ -95,15 +64,12 @@ function addTask(){
     }
     
     // pusha objekt in i arrayen
-    
     listOfTasks.push(newTask);
     console.log("Uppgift tillagd:", newTask);
     alert(`Uppgift skapad\nTask nr: ${newTask.taskId}\nTitel: ${newTask.title}\nBeskrivning: ${newTask.description}`);
-
 };
 
 // Function to complete tasks //!"3" (THOMAS)
-
 function checkIfTasksExist() {
  if (listOfTasks.length === 0) {
      alert("Det finns inga tasks.");
@@ -113,30 +79,28 @@ function checkIfTasksExist() {
 }
 
 function promptForTaskId(action) {
- let taskIdInput;
- do {
-     // Anpassa prompttexten beroende på action (markera eller ta bort)
-     let promptText = action === "complete" 
-         ? "Välj taskID som du vill markera som klar." 
-         : "Välj taskID som du vill ta bort";
-     taskIdInput = parseInt(prompt(promptText), 10);
+let taskIdInput;
+do {
+    // Anpassa prompttexten beroende på action (markera eller ta bort)
+    let promptText = action === "complete" 
+        ? "Välj taskID som du vill markera som klar." 
+        : "Välj taskID som du vill ta bort";
+    taskIdInput = parseInt(prompt(promptText), 10);
 
-     if (isNaN(taskIdInput)) {
-         console.log("Du skrev inte in ett nummer. Se listan över giltiga val.");
-         showAllTasks();
-     }
- } while (isNaN(taskIdInput));
- return taskIdInput;
+    if (isNaN(taskIdInput)) {
+        console.log("Du skrev inte in ett nummer. Se listan över giltiga val.");
+        showAllTasks();
+    }
+} while (isNaN(taskIdInput));
+return taskIdInput;
 }
-
 
 function markTaskAsComplete(){    
 
- if (!checkIfTasksExist()) return;
+    if (!checkIfTasksExist()) return;
 
-    let taskIdInput = promptForTaskId("complete"); // Hämta taskId med rätt prompt
-
-    let task = listOfTasks.findIndex(task => task.taskId == taskIdInput);
+    let taskIdInput = promptForTaskId("complete"); 
+    let task = listOfTasks.find(task => task.taskId == taskIdInput);
     
     if (task) {
         task.isComplete = true;
@@ -146,34 +110,33 @@ function markTaskAsComplete(){
     }
 };
 
-
 // Function to remove tasks (GUSTAV)
 let deletedTasks = []; //! denna används inte ännu
 function deleteTask(){
     if (!checkIfTasksExist()) return;
     
-    let taskIdInput = promptForTaskId("delete"); // Hämta taskId med rätt prompt
+    let taskIdInput = promptForTaskId("delete"); 
 
-        let task = listOfTasks.findIndex(task => task.taskId == taskIdInput);
-        if (task !== -1) {
-            listOfTasks.splice(task, 1);
-        // deletedTasks = listOfTasks.splice(index, 1);
-            alert("Uppgift borttagen!");
-            console.log("uppgift borttagen" + deletedTasks);
-            updateTaskIds(); // Uppdatera taskId:n efter borttagning
-        } else {
-            alert("Ingen uppgift med det angivna ID:t hittades.");
-            console.log("inget giltligt ID hittades")
-        }
+    let task = listOfTasks.findIndex(task => task.taskId == taskIdInput);
+    if (task !== -1) {
+        listOfTasks.splice(task, 1);
+    // deletedTasks = listOfTasks.splice(index, 1);
+        alert("Uppgift borttagen!");
+        console.log("uppgift borttagen" + deletedTasks);
+        updateTaskIds(); // Uppdatera taskId:n efter borttagning
+    } else {
+        alert("Ingen uppgift med det angivna ID:t hittades.");
+        console.log("inget giltligt ID hittades")
+    }
     };
 
-// Function to show all tasks (BEJAMIN)
+// Function to show all tasks (BENJAMIN)
 function showAllTasks(){
-     if (!checkIfTasksExist()) return;
+    if (!checkIfTasksExist()) return;
     
-        listOfTasks.forEach(task => {
-            console.log(`ID: ${task.taskId}, Titel: ${task.title}, Beskrivning: ${task.description}, Klar? ${task.isComplete}`);
-        });
+    listOfTasks.forEach(task => {
+        console.log(`ID: ${task.taskId}, Titel: ${task.title}, Beskrivning: ${task.description}, Klar? ${task.isComplete}`);
+    });
     };
 
 function updateTaskIds() {
@@ -183,5 +146,4 @@ function updateTaskIds() {
 };
 
 // KÖR PROGAMMET
-
 showMenu();
