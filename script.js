@@ -103,7 +103,6 @@ function addTask(){
 };
 
 // Function to complete tasks //!"3" (THOMAS)
-// ?En funktion som söker upp en specifik uppgift genom dess id (ex. använd .find()), och ändrar dess isComplete-värde till true.
 
 function markTaskAsComplete(){    
 
@@ -112,14 +111,28 @@ function markTaskAsComplete(){
     }
     else{
     
-    let taskIdInput = parseInt(prompt("Välj taskID som du vill markera som klar."), 10);
-    let task = listOfTasks.find(task => task.taskId === taskIdInput);
+    let taskIdInput;
+
+    do {
+        taskIdInput = parseInt(prompt("Välj taskID som du vill markera som klar."), 10);
+
+        if (isNaN(taskIdInput)) {
+            console.log("Du skrev inte in ett nummer. Se listan över gilitga val.");
+            showAllTasks();
+        }
+    } while (isNaN(taskIdInput)); 
+
+    function findTask(task) {
+        return task.taskId === taskIdInput;
+    }
+
+    let task = listOfTasks.find(findTask);
     
     if (task) {
         task.isComplete = true;
         console.log("Uppgiften är markerad som klar.");
     } else {
-        console.log("TaskID hittades inte.");
+        console.log("TaskID hittades inte. Använd menyval 2 för att se vilka tasks som finns.");
     }
 }};
 
@@ -127,7 +140,7 @@ function markTaskAsComplete(){
 
 
 // Function to remove tasks (GUSTAV)
-let deletedTasks = []; //! denna finns inte ännu
+let deletedTasks = []; //! denna används inte ännu
 function deleteTask(){
     if (listOfTasks.length === 0) {
         alert("Det finns inga tasks att ta bort")
