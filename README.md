@@ -14,3 +14,15 @@ Närvarande: Thomas, Gustav, Benjamin, Rebecca
 
 // Test och felsök //
 - Gemensamt arbete där var och en löser problem
+
+
+
+// Retro 2024-11-04
+
+Att ta med till nästa vecka:
+- testa att scrum-master har veto/avgöra vilken väg vi ska gå om vi fastnar vid ett vägkors  
+- fortsätt med att planera grunddelarna först och inte alla extradelar  
+- Om vi är osams om hur vi ska lösa problem kan vi försöka vara snabbare på att hitta en lösning.  
+- fortsätta med bra mob coding vi löser tillsammans  
+- Fortsätta prata med varandra  
+- addera planeringstid till estimeringstid för projektet/sprinten  
