@@ -2,7 +2,7 @@
 
 // Task array
 let listOfTasks = [];
-console.log(listOfTasks);
+
 
 
 //Object for tasks -- default structure
@@ -47,7 +47,7 @@ function showMenu(){
         switch (choice) {
             case 1:
                 addTask();
-                console.log("1");
+            
                 
                 break;
             case 2:
@@ -57,7 +57,6 @@ function showMenu(){
                 break;
             case 3:
                 markTaskAsComplete();
-                console.log("mark as complete");
                 
                 break;
             case 4:
