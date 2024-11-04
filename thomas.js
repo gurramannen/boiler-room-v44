@@ -16,7 +16,7 @@ do {
         `
         1. lägg till en ny uppgift\n
         2. Visa alla uppgifter\n
-        3. Markera uppgift som klar\n
+        3. Ändra status på uppgiften (klar/inte klar)\n
         4. Ta bort en uppgift.\n
         5. Avsluta\n
         `
@@ -83,7 +83,7 @@ let taskIdInput;
 do {
     // Anpassa prompttexten beroende på action (markera eller ta bort)
     let promptText = action === "complete" 
-        ? "Välj taskID som du vill markera som klar." 
+        ? "Välj taskID som du vill ändra status på (klar/inte klar)." 
         : "Välj taskID som du vill ta bort";
     taskIdInput = parseInt(prompt(promptText), 10);
 
@@ -100,11 +100,17 @@ function markTaskAsComplete(){
     if (!checkIfTasksExist()) return;
 
     let taskIdInput = promptForTaskId("complete"); 
+
+    // if (taskIdInput === "") {
+    //     console.log("Åtgärden avbröts.");
+    //     return;
+    // }
+
     let task = listOfTasks.find(task => task.taskId == taskIdInput);
     
     if (task) {
-        task.isComplete = true;
-        console.log("Uppgiften är markerad som klar.");
+        task.isComplete = !task.isComplete;
+        console.log(`Uppgift ${taskIdInput} är markerad som ${task.isComplete ? "klar" : "inte klar"}.`);
     } else {
         console.log("TaskID hittades inte. Använd menyval 2 för att se vilka tasks som finns.");
     }
