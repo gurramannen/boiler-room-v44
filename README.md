@@ -28,3 +28,7 @@ Att ta med till nästa vecka:
 - fortsätta med bra mob coding vi löser tillsammans  
 - Fortsätta prata med varandra  
 - addera planeringstid till estimeringstid för projektet/sprinten  
+
+Funktionalitet att arbeta vidare med 
+- "task ID" i dialogrutorna är inte användarvänligt, detta ska förbättras
+- se över alla felmeddelanden, ifall vi kan vara tydligare
