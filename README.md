@@ -18,7 +18,9 @@ Närvarande: Thomas, Gustav, Benjamin, Rebecca
 
 
 // Retro 2024-11-04
+* Vi gick igenom förslag på ny kod för att undvika repetitioner (Thomas extraarbete över helgen)
 
+# Halloween-retro likt föregående veckor
 Att ta med till nästa vecka:
 - testa att scrum-master har veto/avgöra vilken väg vi ska gå om vi fastnar vid ett vägkors  
 - fortsätt med att planera grunddelarna först och inte alla extradelar  
