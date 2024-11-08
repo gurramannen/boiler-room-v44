@@ -25,9 +25,15 @@ main {
     width: clamp(400px, 70%, 800px);
 }
 
-#newTaskInput {
+#newTaskForm input, #newTaskForm textarea {
     width: clamp(400px, 70%, 800px);
     margin-bottom: 1rem;
+}
+
+#newTaskDescription {
+    min-height: 2rem;
+    height: fit-content;
+    justify-content: top;
 }
 
 #tasks {
