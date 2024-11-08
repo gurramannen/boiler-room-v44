@@ -2,4 +2,23 @@ body {
     font-family: monospace;
     background-color: antiquewhite;
     color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: clamp(200px, 40%, 500px);
+   
 }
