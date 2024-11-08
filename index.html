@@ -12,24 +12,32 @@
 
     <main>
         <form
-        id="new-task-form">
+        id="newTaskForm">
             <input
             type="text"
             name="new-task-input"
-            id="new-task-input"
+            id="newTaskInput"
             placeholder="What do you have planned for today?">
             <button
-            type="submit"
-            id="new-task-submit"
+            type="button"
+            id="addTaskButton"
             value="Add task">Add task</button>          
         </form>
-
+        
+        <p id="felmeddelande"></p>
+        
         <section id="tasks">
-            <ul>
-                
+            <!--  Tasks-->
+            <ul id = "activeTasks">
+
             </ul>
+
+
         </section>
+
+
     </main>
     
+    <script src="script.js"></script>
 </body>
 </html>
