@@ -72,11 +72,11 @@ function addNewTask(taskText, taskDescription){
             
         })
     });
-    newTask.appendChild(removeButton);
+    buttonWrapper.appendChild(removeButton);
     
     //text for new task
     let textNode = document.createTextNode(" " + taskText);
-    buttonWrapper.appendChild(textNode);
+    newTask.appendChild(textNode);
 
     // description of task
     let description = document.createElement("p");
