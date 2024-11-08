@@ -46,6 +46,7 @@ function addNewTask(taskText){
 
     taskList.appendChild(newTask); //append li to taskList ul
     
+<<<<<<< HEAD
 }};
 
 
@@ -58,3 +59,6 @@ function addNewTask(taskText){
 // Remove task
 
 
+=======
+}};
+>>>>>>> b68e342c6c2ca5c63b821a70950de3ab459950f3
