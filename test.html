@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-lista</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .task-list { margin-top: 20px; }
+        .task-item { border-bottom: 1px solid #ccc; padding: 10px; }
+        .completed { text-decoration: line-through; color: gray; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Todo-List</h1>
+    
+    <div id="taskForm">
+        <input type="text" id="taskTitle" placeholder="Titel på uppgift" class="input-field" required>
+        <input type="text" id="taskDescription" placeholder="Beskrivning av uppgift" class="input-field" required>
+        <button id="addTaskBtn">Lägg till uppgift</button>
+        <p id="taskError" class="error"></p>
+    </div>
+    
+    <!-- <div>
+        <button id="showTasksBtn">Visa alla uppgifter</button>
+    </div> -->
+    
+    <div id="tasksContainer" class="task-list">
+        <!-- Uppgiftslista -->
+    </div>
+    
+    <script>
+        // Task array
+        let listOfTasks = [];
+        
+        let taskIdCounter = 1;
+
+        // Add task function
+        function addTask() {
+            let title = document.getElementById("taskTitle").value;
+            let description = document.getElementById("taskDescription").value;
+            let taskError = document.getElementById("taskError");
+
+            if (title.length < 5) {
+                taskError.innerText = "Titeln måste vara minst 5 tecken!";
+                setTimeout(() => taskError.innerText = "", 5000);
+                return;
+            }
+            
+            let newTask = {
+                taskId: taskIdCounter++,
+                title: title,
+                description: description,
+                isComplete: false
+            };
+            
+            listOfTasks.push(newTask);
+            document.getElementById("taskTitle").value = "";
+            document.getElementById("taskDescription").value = "";
+            showAllTasks();
+        }
+
+        // Show all tasks
+        function showAllTasks() {
+            let tasksContainer = document.getElementById("tasksContainer");
+            tasksContainer.innerHTML = "";
+
+            listOfTasks.forEach(task => {
+                let taskItem = document.createElement("div");
+                taskItem.className = "task-item";
+                
+                let taskTitle = document.createElement("span");
+                taskTitle.innerText = `${task.title}: ${task.description}`;
+                taskTitle.className = task.isComplete ? "completed" : "";
+
+                let markCompleteBtn = document.createElement("button");
+                markCompleteBtn.innerText = "Markera som klar";
+                markCompleteBtn.className = "markCompleteBtn";
+                markCompleteBtn.addEventListener("click", () => markTaskAsComplete(task.taskId));
+
+                let deleteBtn = document.createElement("button");
+                deleteBtn.innerText = "Ta bort";
+                deleteBtn.className = "deleteBtn";
+                deleteBtn.addEventListener("click", () => deleteTask(task.taskId));
+                
+                taskItem.appendChild(taskTitle);
+                taskItem.appendChild(markCompleteBtn);
+                taskItem.appendChild(deleteBtn);
+                
+                tasksContainer.appendChild(taskItem);
+            });
+        }
+
+        // Mark task as complete
+        function markTaskAsComplete(taskId) {
+            let task = listOfTasks.find(t => t.taskId === taskId);
+            if (task) {
+                task.isComplete = true;
+                showAllTasks();
+            }
+        }
+
+        // Delete task
+        function deleteTask(taskId) {
+            listOfTasks = listOfTasks.filter(task => task.taskId !== taskId);
+            updateTaskIds();
+            showAllTasks();
+        }
+
+        // Update task IDs after deletion
+        function updateTaskIds() {
+            listOfTasks.forEach((task, index) => {
+                task.taskId = index + 1;
+            });
+            taskIdCounter = listOfTasks.length + 1;
+        }
+
+        // Event listeners
+        document.getElementById("addTaskBtn").addEventListener("click", addTask);
+        document.getElementById("showTasksBtn").addEventListener("click", showAllTasks);
+
+    </script>
+</body>
+</html>

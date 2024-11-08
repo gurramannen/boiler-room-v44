@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "fjsx24vecka45",
+			"path": "../../../repo/v45/fjsx24vecka45"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "v44-45"
+	}
+}
