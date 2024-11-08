@@ -54,7 +54,7 @@ function addNewTask(taskText, taskDescription){
 
     // Mark task as complete
     let markButton = document.createElement("button");
-        markButton.innerText = "Klar";
+        markButton.innerText = "Done";
         markButton.addEventListener("click", function () {
             isComplete = !isComplete; // Växla mellan klar och inte klar
             completeTask(isComplete); // Anropa funktionen med det nya värdet
@@ -62,6 +62,18 @@ function addNewTask(taskText, taskDescription){
     
     buttonWrapper.appendChild(markButton);
 
+    //button to remove
+    let removeButton = document.createElement("button");
+    removeButton.innerText = "Delete";
+    removeButton.addEventListener("click", function () {
+        removeButton.innerText = "Sure?";
+        removeButton.addEventListener("click", function(){
+            newTask.remove();
+            
+        })
+    });
+    newTask.appendChild(removeButton);
+    
     //text for new task
     let textNode = document.createTextNode(" " + taskText);
     buttonWrapper.appendChild(textNode);
@@ -71,27 +83,11 @@ function addNewTask(taskText, taskDescription){
     if (taskDescription === "") {
         description.innerText = "";
     } else {
-        description.innerText = "Beskrivning: " + taskDescription;
+        description.innerText = "Description: " + taskDescription;
         newTaskDescription.value = ""; // clear input field after adding task
     }
     newTask.appendChild(description);
 
-    //button to remove
-    let removeButton = document.createElement("button");
-    removeButton.innerText = "x";
-    removeButton.addEventListener("click", function () {
-        removeButton.innerText = "är du säker på att du vill ta bort? klicka igen.";
-        removeButton.addEventListener("click", function(){
-            newTask.remove();
-            
-        })
-
-    
-
-    
-
-    });
-    newTask.appendChild(removeButton);
     
     taskList.appendChild(newTask); //append li to taskList ul
     
