@@ -134,8 +134,8 @@ function deleteTask(){
     }
     else {
     
-        let taskIdCounter = prompt("Välj taskID som du vill ta bort");
-        let index = listOfTasks.findIndex(task => task.taskId == taskIdCounter);
+        let taskId = prompt("Välj taskID som du vill ta bort");
+        let index = listOfTasks.findIndex(task => task.taskId == taskId);
         if (index !== -1) {
             listOfTasks.splice(index, 1);
         // deletedTasks = listOfTasks.splice(index, 1);
