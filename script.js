@@ -21,13 +21,13 @@ addTaskButton.addEventListener("click", function(event) {
 function addNewTask(taskText){
     
     if (newTaskInput.value.trim() === "") {
-        //TODO byta ut alert
         felmeddelande.innerText = "!!Du måste skriva någonting!!";
+        felmeddelande.style.display = "block";
         setTimeout(function(){
             felmeddelande.style.display = "none";
-        }, 5000);
+        }, 4000);
     } else {
-    
+        
     let newTask = document.createElement("li");
 
     //TODO checkbox mark as complete
