@@ -6,7 +6,7 @@ const newTaskForm = document.getElementById("newTaskForm");
 const addTaskButton = document.getElementById("addTaskButton");
 const newTaskInput = document.getElementById("newTaskInput");
 const taskList = document.getElementById("activeTasks");
-const felmeddelande = document.getElementById("error-message");
+const felmeddelande = document.getElementById("felmeddelande");
 // event listener for add new task button
 addTaskButton.addEventListener("click", function(event) {
     event.preventDefault();
@@ -22,7 +22,10 @@ function addNewTask(taskText){
     
     if (newTaskInput.value.trim() === "") {
         //TODO byta ut alert
-        alert("Skriv in en uppgift är du vänlig");
+        felmeddelande.innerText = "!!Du måste skriva någonting!!";
+        setTimeout(function(){
+            felmeddelande.style.display = "none";
+        }, 5000);
     } else {
     
     let newTask = document.createElement("li");
@@ -57,7 +60,11 @@ function addNewTask(taskText){
     let removeButton = document.createElement("button");
     removeButton.innerText = "x";
     removeButton.addEventListener("click", function () {
-        newTask.remove();
+        removeButton.innerText = "är du säker på att du vill ta bort? klicka igen.";
+        removeButton.addEventListener("click", function(){
+            newTask.remove();
+            
+        })
 
     });
     newTask.appendChild(removeButton);
