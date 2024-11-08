@@ -46,6 +46,8 @@ Planering av möte med kund "Magnus"
 
 
 Fick grundläggande HTML och delar av JS på plats 
+- Mobcoding 
+
 
 # Fredag eftermiddag 
 
