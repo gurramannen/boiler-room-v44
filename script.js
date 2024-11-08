@@ -48,19 +48,19 @@ function addNewTask(taskText){
         });
     
     newTask.appendChild(markButton);
+ //button to remove
+ let removeButton = document.createElement("button");
+ removeButton.innerText = "x";
+ removeButton.addEventListener("click", function () {
+     newTask.remove();
 
+ });
+ newTask.appendChild(removeButton);
     //text for new task
     let textNode = document.createTextNode(" " + taskText);
     newTask.appendChild(textNode);
 
-    //button to remove
-    let removeButton = document.createElement("button");
-    removeButton.innerText = "x";
-    removeButton.addEventListener("click", function () {
-        newTask.remove();
-
-    });
-    newTask.appendChild(removeButton);
+   
     
     taskList.appendChild(newTask); //append li to taskList ul
     
