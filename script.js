@@ -27,10 +27,12 @@ function addNewTask(taskText, taskDescription){
     if (newTaskInput.value.trim() === "") {
          errorMessage.style.display = "block";
          console.log("error");
+         newTaskInput.style.borderColor = "red";
          
         
     } else {
     errorMessage.style.display = "none";
+    newTaskInput.style.borderColor = "";
 
     let newTask = document.createElement("li");
 
