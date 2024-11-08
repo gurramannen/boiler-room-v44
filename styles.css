@@ -58,3 +58,10 @@ li {
     padding:1rem;
     
 }
+
+#activeTasks li {
+    font-size: 20px;
+}
+#activeTasks p {
+    font-size: 12px;
+}

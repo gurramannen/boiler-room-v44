@@ -48,6 +48,10 @@ function addNewTask(taskText, taskDescription){
     }
     }   
 
+    // button wrapper
+    let buttonWrapper = document.createElement("div");
+    newTask.appendChild(buttonWrapper);
+
     // Mark task as complete
     let markButton = document.createElement("button");
         markButton.innerText = "Klar";
@@ -56,11 +60,11 @@ function addNewTask(taskText, taskDescription){
             completeTask(isComplete); // Anropa funktionen med det nya värdet
         });
     
-    newTask.appendChild(markButton);
+    buttonWrapper.appendChild(markButton);
 
     //text for new task
     let textNode = document.createTextNode(" " + taskText);
-    newTask.appendChild(textNode);
+    buttonWrapper.appendChild(textNode);
 
     // description of task
     let description = document.createElement("p");
