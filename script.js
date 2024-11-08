@@ -6,8 +6,11 @@ const newTaskForm = document.getElementById("newTaskForm");
 const addTaskButton = document.getElementById("addTaskButton");
 const newTaskInput = document.getElementById("newTaskInput");
 const taskList = document.getElementById("activeTasks");
-const felmeddelande = document.getElementById("error-message");
+// const felmeddelande = document.getElementById("error-message"); //old error message
+const errorMessage = document.getElementById("errorMessage");
+errorMessage.style.display = "none";
 // event listener for add new task button
+
 addTaskButton.addEventListener("click", function(event) {
     event.preventDefault();
     addNewTask(newTaskInput.value);
@@ -21,9 +24,12 @@ addTaskButton.addEventListener("click", function(event) {
 function addNewTask(taskText){
     
     if (newTaskInput.value.trim() === "") {
-        //TODO byta ut alert
-        alert("Skriv in en uppgift är du vänlig");
+         errorMessage.style.display = "block";
+         console.log("error");
+         
+        
     } else {
+    errorMessage.style.display = "none";
     
     let newTask = document.createElement("li");
 
@@ -50,6 +56,8 @@ function addNewTask(taskText){
     newTask.appendChild(markButton);
 
     //text for new task
+   
+
     let textNode = document.createTextNode(" " + taskText);
     newTask.appendChild(textNode);
 
@@ -65,6 +73,8 @@ function addNewTask(taskText){
     taskList.appendChild(newTask); //append li to taskList ul
     
 }};
+
+
 
 
 

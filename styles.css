@@ -10,8 +10,24 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     align-items: center;
+}
+
+#errorMessage {
+    color: red;
+    background-color: whitesmoke;
+    align-self: left;
+    padding: 0;
+}
+
+#newTaskForm {
+    padding: 0;
+    width: clamp(400px, 70%, 800px);
+}
+
+#newTaskInput {
+    width: clamp(400px, 70%, 800px);
+    margin-bottom: 1rem;
 }
 
 #tasks {
