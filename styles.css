@@ -10,8 +10,30 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     align-items: center;
+}
+
+#errorMessage {
+    color: red;
+    background-color: whitesmoke;
+    align-self: left;
+    margin: 0;
+}
+
+#newTaskForm {
+    padding: 0;
+    width: clamp(400px, 70%, 800px);
+}
+
+#newTaskForm input, #newTaskForm textarea {
+    width: clamp(400px, 70%, 800px);
+    margin-top: 1rem;
+}
+
+#newTaskDescription {
+    min-height: 2rem;
+    height: fit-content;
+    justify-content: top;
 }
 
 #tasks {
