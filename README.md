@@ -32,3 +32,26 @@ Att ta med till nästa vecka:
 Funktionalitet att arbeta vidare med 
 - "task ID" i dialogrutorna är inte användarvänligt, detta ska förbättras
 - se över alla felmeddelanden, ifall vi kan vara tydligare
+
+
+# Torsdag planeringsmöte 
+Närvarande: Thomas, Abdikadir, Benjamin, Gustav, Rebecca
+
+Planerade när vi ska ses imorgon och synkade grundläggande förståelse mellan gruppmedlemmarna.
+
+# Fredag förmiddag - uppstart av Sprint 2 
+Närvarande: Thomas, Abdikadir, Benjamin, Gustav, Rebecca
+
+Planering av möte med kund "Magnus"
+
+
+Fick grundläggande HTML och delar av JS på plats 
+
+# Fredag eftermiddag 
+
+Kundmöte
+
+Planering av sprint: 
+* Grundläggande funktionalitet ska vara på plats först
+* I mån av tid så kan utökade funktioner göras fredag eftermiddag/över helgen på eget intiativ (ej förväntat från övriga gruppmedlemmar)
+
