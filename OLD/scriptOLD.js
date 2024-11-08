@@ -1,31 +1,81 @@
 
-// Add task 
 
-// event listener for add new task button
-const newTaskForm = document.getElementById("newTaskForm");
-const addTaskButton = document.getElementById("addTaskButton");
-addTaskButton.addEventListener("click", function(event) {
-    event.preventDefault;
-    addNewTask();
-
-});
+// Task array
+let listOfTasks = [];
+console.log(listOfTasks);
 
 
-// add and append new tasks
-function addNewTask(){
-    const taskList = document.getElementById("activeTasks");
-    let newTask = document.createElement("li");
+//Object for tasks -- default structure
 
-    //TODO checkbox mark as complete
+// let task = {
+//     taskId:  taskIdCounter++,
+//     title: "title",
+//     description: "description",
+//     isComplete: false
+//    };
+// console.log(task);
 
-    //TODO button to remove
 
-    let removeButton = document.createElement("button");
-    removeButton.innerText = "x";
-    removeButton.addEventListener("click", function () {
+// do while loop menu
+
+//toDoList
+//showMenu --> värde
+
+//Värde --> kör funktion 
+
+//Om värdet = nånting som betyder showmenu --> showmenu
+
+
+function showMenu(){
+    let choice;
+    do {
+        choice = prompt(
+            `
+            1. lägg till en ny uppgift\n
+            2. Visa alla uppgifter\n
+            3. Markera uppgift som klar\n
+            4. Ta bort en uppgift.\n
+            5. Avsluta\n
+            
+            `
+        );
+         // Convert choice to an integer and handle NaN input
+         if (!isNaN(choice)) {
+            choice = parseInt(choice);
+         }
+
+        switch (choice) {
+            case 1:
+                addTask();
+                console.log("1");
+                
+                break;
+            case 2:
+                showAllTasks();
+                
+                
+                break;
+            case 3:
+                markTaskAsComplete();
+                console.log("mark as complete");
+                
+                break;
+            case 4:
+                deleteTask();
+                
+                
+                break;
+            case 5:
+                console.log("Avslutar programmet...");
+                
+                
+                break;
+            default:
+                alert(`Felaktig inmatning! Du angav ${choice}, godtagbar input är 1-5` );
+        }
+    } while(choice !== 5);
         
-        newTask.remove();
-        //TODO if it´s empty
+};
 
 
 
@@ -84,8 +134,8 @@ function deleteTask(){
     }
     else {
     
-        let taskId = prompt("Välj taskID som du vill ta bort");
-        let index = listOfTasks.findIndex(task => task.taskId == taskId);
+        let taskIdCounter = prompt("Välj taskID som du vill ta bort");
+        let index = listOfTasks.findIndex(task => task.taskId == taskIdCounter);
         if (index !== -1) {
             listOfTasks.splice(index, 1);
         // deletedTasks = listOfTasks.splice(index, 1);
@@ -115,20 +165,8 @@ function updateTaskIds() {
     listOfTasks.forEach((task, index) => {
         task.taskId = index + 1; // Sätt taskId baserat på dess nuvarande index
     });
-    
-    //TODO text for new task
-    newTask.innerText = document.getElementById("newTaskInput").value;
-    
-    
 };
 
-taskList.appendChild(newTask); //append li to taskList ul
-newTask.appendChild(removeButton);
+// KÖR PROGAMMET
 
-// Mark task as complete
-
-
-
-// Remove task
-
-
+showMenu();
