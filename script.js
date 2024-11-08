@@ -24,15 +24,15 @@ addTaskButton.addEventListener("click", function(event) {
 
 function addNewTask(taskText, taskDescription){
     
-    if (newTaskInput.value.trim() === "") {
+    if (newTaskInput.value.trim() === "") { // missing task input
          errorMessage.style.display = "block";
          console.log("error");
-         newTaskInput.style.borderColor = "red";
+         newTaskInput.style.borderColor = "red"; //changes border color if error
          
         
     } else {
-    errorMessage.style.display = "none";
-    newTaskInput.style.borderColor = "";
+    errorMessage.style.display = "none"; //hides error message
+    newTaskInput.style.borderColor = ""; //resets border color if no error
 
     let newTask = document.createElement("li");
 
