@@ -60,9 +60,9 @@ function addNewTask(taskText, taskDescription){
 
     //button to remove
     let removeButton = document.createElement("button");
-    removeButton.innerText = "x";
+    removeButton.innerText = "Delete";
     removeButton.addEventListener("click", function () {
-        removeButton.innerText = "är du säker på att du vill ta bort? klicka igen.";
+        removeButton.innerText = "Sure?";
         removeButton.addEventListener("click", function(){
             newTask.remove();
             
