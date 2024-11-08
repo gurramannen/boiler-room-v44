@@ -6,7 +6,7 @@ const newTaskForm = document.getElementById("newTaskForm");
 const addTaskButton = document.getElementById("addTaskButton");
 const newTaskInput = document.getElementById("newTaskInput");
 const taskList = document.getElementById("activeTasks");
-
+const felmeddelande = document.getElementById("error-message");
 // event listener for add new task button
 addTaskButton.addEventListener("click", function(event) {
     event.preventDefault();
@@ -28,7 +28,30 @@ function addNewTask(taskText){
     let newTask = document.createElement("li");
 
     //TODO checkbox mark as complete
+    let isComplete = false;
+    function completeTask(isComplete) {
+    if (isComplete) {
+        newTask.style.color = "green";
+        newTask.style.fontWeight = "bold";
+    } else {
+        newTask.style.color = "";
+        newTask.style.fontWeight = "";
+    }
+    }   
 
+    // Mark task as complete
+    let markButton = document.createElement("button");
+        markButton.innerText = "Klar";
+        markButton.addEventListener("click", function () {
+            isComplete = !isComplete; // Växla mellan klar och inte klar
+            completeTask(isComplete); // Anropa funktionen med det nya värdet
+        });
+    
+    newTask.appendChild(markButton);
+
+    //text for new task
+    let textNode = document.createTextNode(" " + taskText);
+    newTask.appendChild(textNode);
 
     //button to remove
     let removeButton = document.createElement("button");
@@ -38,27 +61,21 @@ function addNewTask(taskText){
 
     });
     newTask.appendChild(removeButton);
-
-    //text for new task
-    let textNode = document.createTextNode(" " + taskText);
-    newTask.appendChild(textNode);
-
-
+    
     taskList.appendChild(newTask); //append li to taskList ul
     
-<<<<<<< HEAD
 }};
 
 
 
 
-// Mark task as complete
+
+
 
 
 
 // Remove task
 
-
-=======
-}};
->>>>>>> b68e342c6c2ca5c63b821a70950de3ab459950f3
+function removeTask(){
+    
+}

@@ -16,9 +16,23 @@ main {
 
 #tasks {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: left;
     background-color: white;
-    width: clamp(200px, 40%, 500px);
+    width: clamp(400px, 70%, 800px);
    
+}
+
+#activeTasks {
+    color: black;
+    display: inline;
+    list-style: none;   
+}
+
+li {
+    border: 2px, solid, grey;
+    border-radius: 15px;
+    margin: 1rem;
+    padding:1rem;
+    
 }
