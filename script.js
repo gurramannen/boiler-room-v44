@@ -50,27 +50,13 @@ function addNewTask(taskText, taskDescription){
 
     // Mark task as complete
     let markButton = document.createElement("button");
-        markButton.innerText = "Klar";
+        markButton.innerText = "Done";
         markButton.addEventListener("click", function () {
             isComplete = !isComplete; // Växla mellan klar och inte klar
             completeTask(isComplete); // Anropa funktionen med det nya värdet
         });
     
     newTask.appendChild(markButton);
-
-    //text for new task
-    let textNode = document.createTextNode(" " + taskText);
-    newTask.appendChild(textNode);
-
-    // description of task
-    let description = document.createElement("p");
-    if (taskDescription === "") {
-        description.innerText = "";
-    } else {
-        description.innerText = "Beskrivning: " + taskDescription;
-        newTaskDescription.value = ""; // clear input field after adding task
-    }
-    newTask.appendChild(description);
 
     //button to remove
     let removeButton = document.createElement("button");
@@ -81,13 +67,23 @@ function addNewTask(taskText, taskDescription){
             newTask.remove();
             
         })
-
-    
-
-    
-
     });
     newTask.appendChild(removeButton);
+    
+    //text for new task
+    let textNode = document.createTextNode(" " + taskText);
+    newTask.appendChild(textNode);
+
+    // description of task
+    let description = document.createElement("p");
+    if (taskDescription === "") {
+        description.innerText = "";
+    } else {
+        description.innerText = "Description: " + taskDescription;
+        newTaskDescription.value = ""; // clear input field after adding task
+    }
+    newTask.appendChild(description);
+
     
     taskList.appendChild(newTask); //append li to taskList ul
     
