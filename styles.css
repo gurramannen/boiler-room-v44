@@ -70,6 +70,16 @@ button {
     width: 4rem;
 }
 
+#removeButton {
+    background-color: red;  
+    color: white;
+}
+
+#markButton {
+    background-color: green;
+    color: white;
+}
+
 #addTaskButton {
     border: 2px, solid, grey;
     border-radius: 15px;

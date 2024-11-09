@@ -55,23 +55,66 @@ function addNewTask(taskText, taskDescription){
     // Mark task as complete
     let markButton = document.createElement("button");
         markButton.innerText = "Done";
+        markButton.id = "markButton";
         markButton.addEventListener("click", function () {
             isComplete = !isComplete; // Växla mellan klar och inte klar
             completeTask(isComplete); // Anropa funktionen med det nya värdet
+            if (isComplete) {
+                party.confetti(this, {
+                    count: party.variation.range(20, 40),
+                    size: party.variation.range(0.8, 1.2),
+                });
+            }
         });
     
     buttonWrapper.appendChild(markButton);
 
     //button to remove
+    // let removeButton = document.createElement("button");
+    // removeButton.innerText = "Delete";
+    // removeButton.id = "removeButton";
+    // removeButton.addEventListener("click", function () {
+    //     removeButton.innerText = "Sure?";
+    //     removeButton.addEventListener("click", function(){
+    //         newTask.remove();
+            
+    //     })
+    // });
+
     let removeButton = document.createElement("button");
     removeButton.innerText = "Delete";
-    removeButton.addEventListener("click", function () {
+    removeButton.id = "removeButton";
+    
+    removeButton.addEventListener("click", function firstClick() {
+        // Ändra text och stil på knappen
         removeButton.innerText = "Sure?";
-        removeButton.addEventListener("click", function(){
-            newTask.remove();
-            
-        })
-    });
+        newTask.style.color = "red";
+        newTask.style.fontStyle = "italic";
+    
+        // Starta en timer för att återställa texten efter 3 sekunder
+        const timer = setTimeout(() => {
+            removeButton.innerText = "Delete";
+            newTask.style.color = "";     // Ta bort röd text
+            newTask.style.fontStyle = ""; // Ta bort kursiv stil
+            removeButton.addEventListener("click", firstClick); // Återaktivera `firstClick`
+            removeButton.removeEventListener("click", secondClick); // Ta bort `secondClick`
+        }, 3000);
+    
+        // Definiera andra klickhändelsen för att ta bort uppgiften
+        function secondClick() {
+            clearTimeout(timer); // Avbryt timern om användaren klickar igen innan den löper ut
+            removeButton.removeEventListener("click", firstClick); // Ta bort första klickhändelsen
+            removeButton.removeEventListener("click", secondClick); // Ta bort andra klickhändelsen
+            newTask.remove(); // Ta bort uppgiften
+        }
+    
+        // Lägg till `secondClick` som körs om användaren klickar igen inom 3 sekunder
+        removeButton.addEventListener("click", secondClick, { once: true });
+        removeButton.removeEventListener("click", firstClick); // Temporärt ta bort `firstClick`
+    }, { once: true });
+    
+
+
     buttonWrapper.appendChild(removeButton);
     
     //text for new task
