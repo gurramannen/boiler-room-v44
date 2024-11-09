@@ -55,9 +55,16 @@ function addNewTask(taskText, taskDescription){
     // Mark task as complete
     let markButton = document.createElement("button");
         markButton.innerText = "Done";
+        markButton.id = "markButton";
         markButton.addEventListener("click", function () {
             isComplete = !isComplete; // Växla mellan klar och inte klar
             completeTask(isComplete); // Anropa funktionen med det nya värdet
+            if (isComplete) {
+                party.confetti(this, {
+                    count: party.variation.range(20, 40),
+                    size: party.variation.range(0.8, 1.2),
+                });
+            }
         });
     
     buttonWrapper.appendChild(markButton);
@@ -65,6 +72,7 @@ function addNewTask(taskText, taskDescription){
     //button to remove
     let removeButton = document.createElement("button");
     removeButton.innerText = "Delete";
+    removeButton.id = "removeButton";
     removeButton.addEventListener("click", function () {
         removeButton.innerText = "Sure?";
         removeButton.addEventListener("click", function(){
