@@ -94,7 +94,16 @@ function addNewTask(taskText, taskDescription){
         // Starta en timer för att återställa texten efter 3 sekunder
         const timer = setTimeout(() => {
             removeButton.innerText = "Delete";
-            newTask.style.color = "";     // Ta bort röd text
+            switch (isComplete) {
+                case true:
+                    newTask.style.color = "green"; // green text if task is complete
+                    break;
+            
+                default:
+                    newTask.style.color = "";     // Ta bort röd text
+                    newTask.style.fontWeight = ""; // remove bold text
+                    break;
+            }
             newTask.style.fontStyle = ""; // Ta bort kursiv stil
             removeButton.addEventListener("click", firstClick); // Återaktivera `firstClick`
             removeButton.removeEventListener("click", secondClick); // Ta bort `secondClick`
