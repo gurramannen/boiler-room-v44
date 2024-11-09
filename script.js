@@ -24,9 +24,8 @@ addTaskButton.addEventListener("click", function(event) {
 
 function addNewTask(taskText, taskDescription){
     
-    if (newTaskInput.value.trim() === "") { // missing task input
+    if (taskText.trim() === "") { // missing task input
          errorMessage.style.display = "block";
-         console.log("error");
          newTaskInput.style.borderColor = "red"; //changes border color if error
          
         
@@ -36,17 +35,22 @@ function addNewTask(taskText, taskDescription){
 
     let newTask = document.createElement("li");
 
-    // mark as complete
+    // complete status styling
     let isComplete = false;
-    function completeTask(isComplete) {
-    if (isComplete) {
-        newTask.style.color = "green";
-        newTask.style.fontWeight = "bold";
-    } else {
-        newTask.style.color = "";
-        newTask.style.fontWeight = "";
+    function setTaskCompleteStyles(isComplete, taskElement) {
+        if (isComplete) {
+            taskElement.style.color = "green";
+            taskElement.style.fontWeight = "bold";
+        } else {
+            taskElement.style.color = "";
+            taskElement.style.fontWeight = "";
+        }
     }
-    }   
+    // mark as complete
+    function completeTask(isComplete) {
+        setTaskCompleteStyles(isComplete, newTask);
+    }
+    
 
     // button wrapper
     let buttonWrapper = document.createElement("div");
@@ -94,17 +98,8 @@ function addNewTask(taskText, taskDescription){
         // Starta en timer för att återställa texten efter 3 sekunder
         const timer = setTimeout(() => {
             removeButton.innerText = "Delete";
-            switch (isComplete) {
-                case true:
-                    newTask.style.color = "green"; // green text if task is complete
-                    break;
-            
-                default:
-                    newTask.style.color = "";     // Ta bort röd text
-                    newTask.style.fontWeight = ""; // remove bold text
-                    break;
-            }
-            newTask.style.fontStyle = ""; // Ta bort kursiv stil
+            setTaskCompleteStyles(isComplete, newTask); // style depending on complete status
+            newTask.style.fontStyle = ""; // clear italic style
             removeButton.addEventListener("click", firstClick); // Återaktivera `firstClick`
             removeButton.removeEventListener("click", secondClick); // Ta bort `secondClick`
         }, 3000);
@@ -132,12 +127,8 @@ function addNewTask(taskText, taskDescription){
 
     // description of task
     let description = document.createElement("p");
-    if (taskDescription === "") {
-        description.innerText = "";
-    } else {
-        description.innerText = "Description: " + taskDescription;
-        newTaskDescription.value = ""; // clear input field after adding task
-    }
+    description.innerText = taskDescription ? `Description: ${taskDescription}` : "";
+    newTaskDescription.value = ""; // Clear input field after adding task
     newTask.appendChild(description);
 
     
@@ -152,11 +143,3 @@ function addNewTask(taskText, taskDescription){
 
 
 
-
-
-
-// Remove task
-
-function removeTask(){
-    
-}
