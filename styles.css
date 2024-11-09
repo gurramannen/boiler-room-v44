@@ -46,6 +46,7 @@ main {
     background-color: rgba(255, 255, 255, 0.848);
     width: clamp(400px, 70%, 800px);
     border-radius: 20px;
+    min-height: 200px;
 }
 
 #activeTasks {
@@ -55,6 +56,14 @@ main {
     flex-direction: column;
     margin: 0;
     padding: 0.2rem 0 1rem;
+}
+
+#noTasksMessage {
+    display: block;
+    color: gray;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
 }
 
 li {

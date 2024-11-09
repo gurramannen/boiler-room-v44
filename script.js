@@ -1,7 +1,3 @@
-
-// TODO local storage
-
-
 const newTaskForm = document.getElementById("newTaskForm");
 const addTaskButton = document.getElementById("addTaskButton");
 const newTaskInput = document.getElementById("newTaskInput");
@@ -23,6 +19,7 @@ addTaskButton.addEventListener("click", function(event) {
 
 
 function addNewTask(taskText, taskDescription){
+    const noTasksMessage = document.getElementById("noTasksMessage");
     
     if (taskText.trim() === "") { // missing task input
          errorMessage.style.display = "block";
@@ -32,6 +29,7 @@ function addNewTask(taskText, taskDescription){
     } else {
     errorMessage.style.display = "none"; //hides error message
     newTaskInput.style.borderColor = ""; //resets border color if no error
+    noTasksMessage.style.display = "none";// hide the "No tasks available" message
 
     let newTask = document.createElement("li");
 
@@ -114,6 +112,12 @@ function addNewTask(taskText, taskDescription){
             removeButton.removeEventListener("click", firstClick); // Ta bort första klickhändelsen
             removeButton.removeEventListener("click", secondClick); // Ta bort andra klickhändelsen
             newTask.remove(); // Ta bort uppgiften
+
+            // Show "No tasks available" message if no tasks are left
+            if (taskList.children.length === 0) {
+                noTasksMessage.style.display = "block";
+            }
+            
         }
     
         // Lägg till `secondClick` som körs om användaren klickar igen inom 3 sekunder
