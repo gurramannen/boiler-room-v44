@@ -41,9 +41,13 @@ function addNewTask(taskText, taskDescription){
         if (isComplete) {
             taskElement.style.color = "green";
             taskElement.style.fontWeight = "bold";
+            newTask.style.backgroundColor = "#F8FAF5"; //light green background
+            newTask.style.border = "2px solid #E7EEDD"; // light green border
         } else {
             taskElement.style.color = "";
             taskElement.style.fontWeight = "";
+            newTask.style.backgroundColor = "white";
+            newTask.style.border = ""; // resets border 
         }
     }
     // mark as complete
