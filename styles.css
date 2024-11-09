@@ -43,6 +43,7 @@ main {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
     background-color: rgba(255, 255, 255, 0.848);
     width: clamp(400px, 70%, 800px);
     border-radius: 20px;
@@ -64,6 +65,7 @@ main {
     font-style: italic;
     text-align: center;
     padding: 1rem;
+    max-width: 70%;
 }
 
 li {

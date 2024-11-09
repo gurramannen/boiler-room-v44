@@ -3,10 +3,14 @@ const addTaskButton = document.getElementById("addTaskButton");
 const newTaskInput = document.getElementById("newTaskInput");
 const taskDescription = document.getElementById("newTaskDescription");
 const taskList = document.getElementById("activeTasks");
-// const felmeddelande = document.getElementById("error-message"); //old error message
+const noTasksMessage = document.getElementById("noTasksMessage");
 const errorMessage = document.getElementById("errorMessage");
-errorMessage.style.display = "none"; // initially hides the error message
-// event listener for add new task button
+
+//  show "No tasks available" if task list is initially empty
+noTasksMessage.style.display = taskList.children.length === 0 ? "block" : "none";
+errorMessage.style.display = "none"; // Initially hides the error message
+
+
 
 addTaskButton.addEventListener("click", function(event) {
     event.preventDefault();
@@ -19,7 +23,6 @@ addTaskButton.addEventListener("click", function(event) {
 
 
 function addNewTask(taskText, taskDescription){
-    const noTasksMessage = document.getElementById("noTasksMessage");
     
     if (taskText.trim() === "") { // missing task input
          errorMessage.style.display = "block";
@@ -30,6 +33,7 @@ function addNewTask(taskText, taskDescription){
     errorMessage.style.display = "none"; //hides error message
     newTaskInput.style.borderColor = ""; //resets border color if no error
     noTasksMessage.style.display = "none";// hide the "No tasks available" message
+    
 
     let newTask = document.createElement("li");
 
@@ -109,15 +113,14 @@ function addNewTask(taskText, taskDescription){
         // Definiera andra klickhändelsen för att ta bort uppgiften
         function secondClick() {
             clearTimeout(timer); // Avbryt timern om användaren klickar igen innan den löper ut
-            removeButton.removeEventListener("click", firstClick); // Ta bort första klickhändelsen
-            removeButton.removeEventListener("click", secondClick); // Ta bort andra klickhändelsen
+            //removeButton.removeEventListener("click", firstClick); // Ta bort första klickhändelsen
+            //removeButton.removeEventListener("click", secondClick); // Ta bort andra klickhändelsen
             newTask.remove(); // Ta bort uppgiften
 
-            // Show "No tasks available" message if no tasks are left
+            // Display "No tasks available" if no tasks are left
             if (taskList.children.length === 0) {
                 noTasksMessage.style.display = "block";
             }
-            
         }
     
         // Lägg till `secondClick` som körs om användaren klickar igen inom 3 sekunder
@@ -142,7 +145,8 @@ function addNewTask(taskText, taskDescription){
     
     taskList.appendChild(newTask); //append li to taskList ul
     
-}};
+    }
+};
 
 
 
