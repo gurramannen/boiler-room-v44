@@ -11,6 +11,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: clamp(400px, 70%, 800px);
 }
 
 #errorMessage {
@@ -22,12 +23,12 @@ main {
 
 #newTaskForm {
     padding: 0;
-    width: clamp(400px, 70%, 800px);
+    width: clamp(200px, 70%, 800px);
     display: contents;
 }
 
 #newTaskForm input, #newTaskForm textarea {
-    width: clamp(400px, 70%, 600px);
+    width: clamp(200px, 70%, 600px);
     margin-top: 1rem;
     padding: .5rem;
 }
@@ -38,7 +39,7 @@ main {
     justify-content: top;
 }
 
-#tasks {
+#tasks { /* container for tasks */
     display: flex;
     flex-direction: row;
     align-items: left;
@@ -49,8 +50,12 @@ main {
 
 #activeTasks {
     color: black;
-    display: inline;
     list-style: none;   
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 li {
@@ -58,7 +63,7 @@ li {
     border-radius: 15px;
     margin: 1rem;
     padding:1rem;
-    
+    width: inherit;
 }
 
 button {
@@ -93,4 +98,6 @@ button {
 }
 #activeTasks p {
     font-size: 12px;
+    width: inherit;
+    overflow-wrap: break-word;
 }
