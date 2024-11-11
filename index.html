@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,11 +20,6 @@
             id="newTaskInput"
             placeholder="What do you have planned for today?">
             <p id="errorMessage">You must enter a task-name</p>
-            <!-- <input 
-            type="text"
-            name="new-task-description"
-            id="newTaskDescription"
-            placeholder="Description of task"> -->
             <textarea name="new-task-description" id="newTaskDescription" placeholder="Description of task"></textarea>
             <button
             type="button"
@@ -31,10 +27,7 @@
             value="Add task">Add task</button>          
         </form>
         
-        <!-- <section id="inputErrorMessages">
-            <p id="errorMessage">You must enter a task-name</p>
-        </section> -->
-
+    
         <p id="felmeddelande"></p>
         
         <section id="tasks">
@@ -51,7 +44,6 @@
 
     </main>
     
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+    
 </body>
 </html>

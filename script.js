@@ -39,15 +39,15 @@ function addNewTask(taskText, taskDescription){
 
     // complete status styling
     let isComplete = false;
-    function setTaskCompleteStyles(isComplete, taskElement) {
+    function setTaskCompleteStyles(isComplete, newTask) {
         if (isComplete) {
-            taskElement.style.color = "green";
-            taskElement.style.fontWeight = "bold";
+            newTask.style.color = "green";
+            newTask.style.fontWeight = "bold";
             newTask.style.backgroundColor = "#F8FAF5"; //light green background
             newTask.style.border = "2px solid #E7EEDD"; // light green border
         } else {
-            taskElement.style.color = "";
-            taskElement.style.fontWeight = "";
+            newTask.style.color = "";
+            newTask.style.fontWeight = "";
             newTask.style.backgroundColor = "white";
             newTask.style.border = ""; // resets border 
         }
@@ -58,7 +58,7 @@ function addNewTask(taskText, taskDescription){
     }
     
 
-    // button wrapper
+    // button wrapper, created around buttons to group them and push the next line down.
     let buttonWrapper = document.createElement("div");
     newTask.appendChild(buttonWrapper);
 
@@ -79,18 +79,6 @@ function addNewTask(taskText, taskDescription){
     
     buttonWrapper.appendChild(markButton);
 
-    //button to remove
-    // let removeButton = document.createElement("button");
-    // removeButton.innerText = "Delete";
-    // removeButton.id = "removeButton";
-    // removeButton.addEventListener("click", function () {
-    //     removeButton.innerText = "Sure?";
-    //     removeButton.addEventListener("click", function(){
-    //         newTask.remove();
-            
-    //     })
-    // });
-
     let removeButton = document.createElement("button");
     removeButton.innerText = "Delete";
     removeButton.id = "removeButton";
@@ -100,6 +88,7 @@ function addNewTask(taskText, taskDescription){
         removeButton.innerText = "Sure?";
         newTask.style.color = "red";
         newTask.style.fontStyle = "italic";
+        newTask.style.border = "1px solid red"; // resets border 
     
         // Starta en timer för att återställa texten efter 3 sekunder
         const timer = setTimeout(() => {
@@ -113,8 +102,6 @@ function addNewTask(taskText, taskDescription){
         // Definiera andra klickhändelsen för att ta bort uppgiften
         function secondClick() {
             clearTimeout(timer); // Avbryt timern om användaren klickar igen innan den löper ut
-            //removeButton.removeEventListener("click", firstClick); // Ta bort första klickhändelsen
-            //removeButton.removeEventListener("click", secondClick); // Ta bort andra klickhändelsen
             newTask.remove(); // Ta bort uppgiften
 
             // Display "No tasks available" if no tasks are left
@@ -133,7 +120,7 @@ function addNewTask(taskText, taskDescription){
     buttonWrapper.appendChild(removeButton);
     
     //text for new task
-    let textNode = document.createTextNode(" " + taskText);
+    let textNode = document.createTextNode(taskText);
     newTask.appendChild(textNode);
 
     // description of task
